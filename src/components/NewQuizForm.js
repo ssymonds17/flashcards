@@ -25,6 +25,7 @@ export default function NewQuizForm() {
 
     cards.forEach((card) => {
       let newCardId = uuidv4();
+      cardIds.push(newCardId);
       dispatch(
         addCard({
           cardId: newCardId,
@@ -32,7 +33,6 @@ export default function NewQuizForm() {
           back: card.back
         })
       );
-      cardIds.push(newCardId);
     });
     dispatch(
       addQuizToQuizzesAndTopics({
