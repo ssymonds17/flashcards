@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 
 const initialState = {
   topics: {}
@@ -16,6 +15,6 @@ const topicsSlice = createSlice({
   }
 });
 
-export const selectTopics = useSelector((state) => state.topics);
+export const selectTopics = (state) => state.topics;
 export const { addTopic } = topicsSlice.actions;
 export default topicsSlice.reducer;
