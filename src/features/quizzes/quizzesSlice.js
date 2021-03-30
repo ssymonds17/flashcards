@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addQuiz } from "../topics/topicsSlice";
-import { useDispatch } from "react-redux";
+import { addQuizId } from "../topics/topicsSlice";
 
 const quizzesSlice = createSlice({
   name: "quizzes",
@@ -9,24 +8,22 @@ const quizzesSlice = createSlice({
   },
   reducers: {
     addQuiz: (state, action) => {
-      const { id, name, topicId, cardIds } = action.payload;
-      state.quizzes[id] = {
-        id,
-        name,
-        topicId,
-        cardIds
+      const { quizId, name, topicId, cardIds } = action.payload;
+      state.quizzes[quizId] = {
+        id: quizId,
+        name: name,
+        topicId: topicId,
+        cardIds: cardIds
       };
     }
   }
 });
 
-const dispatch = useDispatch();
-
 export const addQuizToQuizzesAndTopics = (quiz) => {
-  const { topicId, id } = quiz;
+  const { topicId, quizId } = quiz;
   return (dispatch) => {
     dispatch(quizzesSlice.actions.addQuiz(quiz));
-    dispatch(addQuizId({ quizId: id, topicId: topicId }));
+    dispatch(addQuizId({ quizId: quizId, topicId: topicId }));
   };
 };
 
