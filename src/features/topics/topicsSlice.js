@@ -14,6 +14,10 @@ const topicsSlice = createSlice({
         icon,
         quizIds: []
       };
+    },
+    addQuiz: (state, action) => {
+      const { quizId, topicId } = action.payload;
+      state.topics[topicId][quizIds].push(quizId);
     }
   }
 });
